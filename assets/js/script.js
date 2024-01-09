@@ -33,19 +33,16 @@ $('.time-block').click (function (a) {
 $(".time-block").each(function () {
   let id = $(this).attr("id");
   let match = id.match(/\d+$/);
-  if (match && id.startsWith("hour")) {
-    if (match[0] == dayjs().hour()) {
-      $(this).addClass("present");
-      $(this).removeClass("future");
-      $(this).removeClass("past");
+  console.log(id);
+  console.log(match);
+  console.log(match[0]);
+  if (id && id.startsWith("hour")) {
+    if (match[0] == dayjs().hour()) { 
+      $(this).attr("class", "row time-block present")
     } else if (match[0] < dayjs().hour()) {
-      $(this).addClass("past");
-      $(this).removeClass("present");
-      $(this).removeClass("future");
+      $(this).attr("class", "row time-block past")
     } else if (match[0] > dayjs().hour()) {
-      $(this).addClass("future");
-      $(this).removeClass("present");
-      $(this).removeClass("past");
+      $(this).attr("class", "row time-block future")
     }
     let globalBlockInput = $(this).children()[1];
   globalBlockInput.value = localStorage.getItem("hour" + match[0]);
