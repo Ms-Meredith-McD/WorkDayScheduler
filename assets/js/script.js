@@ -57,6 +57,8 @@ $(".time-block").each(function () {
 });
 
 // Function to make dates have the right ending using "makeDatePretty"
+// the switch statement evaluates the remainder of the date divided by 10 using the %  if the date isn't between 3 and 21
+// the "cases" are what to do when there are different remainders, aka 1,2,or 3,  if none of the above then its "th" again
 function makeDatePretty(date) {
   if (date > 3 && date < 21) return 'th';
   switch (date % 10) {
