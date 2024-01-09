@@ -11,7 +11,7 @@ The goal of this Work Day Scheduler is to demonstrate what I have learned about 
 4. When clicking on a timeblock, the user can enter an event
 5. When the user clicks the "save" icon, the text is saved in local storage
 6. When the page is refreshed, the saved events persist
-GIVEN I am using a daily planner to create a schedule
+
 
 ## Installation
 No installation is needed to use this resource, simply follow the link to the webpage
