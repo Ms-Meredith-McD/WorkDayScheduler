@@ -5,7 +5,7 @@ $(document).ready(function () {
   // Global variables
   // Startup the date engine
   const myDay = dayjs().date();
-  const pretty = makeDatePretty(date)
+  const pretty = makeDatePretty(myDay)
   const myDatePretty = dayjs().format(`MMMM D[${pretty}], YYYY`);
 
 
@@ -15,11 +15,11 @@ $(document).ready(function () {
 
 $('.time-block').click (function (a) {
   if ($(a.target).is("button")) {
-    let b = $(this).attr("b");
-    let c = b.match(/\d+$/);
-  if (c && b.startsWith('hour')) {
+    let id = $(this).attr("id");
+    let match = id.match(/\d+$/);
+  if (match && id.startsWith('hour')) {
     const blockInput = $(this).children()[1].value;
-    localStorage.setItem("hour" + c[0], JSON.stringify(blockInput));
+    localStorage.setItem("hour" + match[0], JSON.stringify(blockInput));
   }
   }
 })
@@ -31,9 +31,9 @@ $('.time-block').click (function (a) {
 //then the stored value is retrieved and is assigned to the input unless it is null, replace is used to remove quotes
 // finally, the text is updated to "currentDay" using myDatePretty as set in the global variables
 $(".time-block").each(function () {
-  let b = $(this).attr("b");
-  let c = b.match(/\d+$/);
-  if (c && b.startsWith("hour")) {
+  let id = $(this).attr("id");
+  let match = id.match(/\d+$/);
+  if (match && id.startsWith("hour")) {
     if (match[0] == dayjs().hour()) {
       $(this).addClass("present");
       $(this).removeClass("future");
@@ -48,7 +48,7 @@ $(".time-block").each(function () {
       $(this).removeClass("past");
     }
     let globalBlockInput = $(this).children()[1];
-  globalBlockInput.value = localStorage.getItem("hour" + c[0]);
+  globalBlockInput.value = localStorage.getItem("hour" + match[0]);
   if (globalBlockInput != null) {
       globalBlockInput.value = globalBlockInput.value.replace(/\"/g, "");
   }
