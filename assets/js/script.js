@@ -11,7 +11,7 @@ $(document).ready(function () {
 
 
 // Event Listener for click events on the save button with the time-block id
-// click button, store user input with time in the time block
+// saves the value of the input field within a time block to the local storage when the corresponding save button is clicked, this corresponds to the specific hour of the time block
 
 $('.time-block').click (function (a) {
   if ($(a.target).is("button")) {
